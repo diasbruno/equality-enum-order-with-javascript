@@ -10,6 +10,21 @@ USD.equals = eq;
 BRL.equals = eq;
 JPY.equals = eq;
 
+USD.toEnum = () => 0;
+BRL.toEnum = () => 1;
+JPY.toEnum = () => 2;
+
+const Currency = {
+  fromEnum(x) {
+    switch(x) {
+    case 0: return USD;
+    case 1: return BRL;
+    case 2: return JPY;
+    default: { throw new Error(`no currency for ${x}.`); }
+    }
+  }
+};
+
 module.exports = {
-  USD, BRL, JPY
+  Currency, USD, BRL, JPY
 };

@@ -1,4 +1,4 @@
-const { USD, BRL, JPY } = require('./eeo.js');
+const { Currency, USD, BRL, JPY } = require('./eeo.js');
 const assert = require('assert');
 
 [
@@ -17,6 +17,14 @@ const assert = require('assert');
       });
     }
   ],
+  [
+    'define enumeration for types',
+    () => {
+      [USD, BRL, JPY].forEach(currency => {
+	assert.strictEqual(Currency.fromEnum(currency.toEnum()), currency);
+      });
+    }
+  ]
 ].forEach(
   ([title, work]) => {
     console.log(title);
