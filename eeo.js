@@ -14,6 +14,14 @@ USD.toEnum = () => 0;
 BRL.toEnum = () => 1;
 JPY.toEnum = () => 2;
 
+function orderCurrency(b) {
+  return this.toEnum() > b.toEnum();
+}
+
+USD.lte = orderCurrency;
+BRL.lte = orderCurrency;
+JPY.lte = orderCurrency;
+
 const Currency = {
   fromEnum(x) {
     switch(x) {

@@ -24,6 +24,24 @@ const assert = require('assert');
 	assert.strictEqual(Currency.fromEnum(currency.toEnum()), currency);
       });
     }
+  ],
+  [
+    'define ordering for types',
+    () => {
+      [
+	[USD, [], [BRL, JPY]],
+	[BRL, [USD], [JPY]],
+	[JPY, [USD, BRL], []],
+      ].forEach(([currency, greaters, smallers]) => {
+	greaters.forEach(
+	  greater => assert.strictEqual(currency.lte(greater), true)
+	);
+
+	smallers.forEach(
+	  smaller => assert.strictEqual(currency.lte(smaller), false)
+	);
+      });
+    }
   ]
 ].forEach(
   ([title, work]) => {
